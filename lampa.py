@@ -19,3 +19,17 @@ def toggle(arguments):
     }
 
     datasender.send(json_data)
+
+def color(red, green, blue, effect="smooth", duration=500):
+    rgb = (red*65536)+(green*256)+blue
+
+    json_data = {
+        "did": settings.deviceId,
+        "id": "1",
+        "method": "set_rgb",
+        "params": [rgb, effect, duration],
+    }
+
+    datasender.send(json_data)
+
+
