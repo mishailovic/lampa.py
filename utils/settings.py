@@ -1,0 +1,4 @@
+clientId = ""
+accessToken = "" 
+region = ""
+deviceId = "" 
