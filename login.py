@@ -6,6 +6,4 @@ creds = open("utils/settings.py")
 
 data = login.get_token(client_id, client_secret)
 
-print("Your access token is: " + data['access_token'])
-
-
+print("Your access token is: " + data["access_token"])

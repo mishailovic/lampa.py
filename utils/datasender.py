@@ -2,6 +2,7 @@ import requests
 from utils import settings
 import json
 
+
 def send(arguments):
     payload = {
         "clientId": settings.clientId,
