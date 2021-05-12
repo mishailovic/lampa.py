@@ -1,5 +1,5 @@
 import requests
-import settings
+from utils import settings
 import json
 
 def send(arguments):
