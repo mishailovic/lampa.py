@@ -1,38 +1,22 @@
-import requests
-import configparser
 import json
+from utils import datasender
+from utils import settings
 
 def toggle(arguments):
-    
-    config = configparser.ConfigParser()
-    config.read("settings.ini")
-    
+    if arguments == "on":
+        params = "on"
+    elif arguments == "off":
+        params = "off"
+    else:
+        return('Arguments are incorrect, only "on" and "off" is possible') 
+
     json_data = {
-        "did": config["Variables"]["deviceId"],
-        "id": "1",
-        "method": "set_power",
-        "params": [
-            arguments
-        ]    
-    }
+            "did": settings.deviceId,
+            "id": "1",
+            "method": "set_power",
+            "params": [
+                params
+            ]    
+        }  
 
-    payload = {
-        "clientId": config["Variables"]["clientId"],
-        "accessToken": config["Variables"]["accessToken"],
-        "data": json.dumps(json_data),
-    }
-
-    region = config["Variables"]["region"]
-
-    url = (
-        "https://"
-        + region
-        + ".openapp.io.mi.com/openapp/device/rpc/"
-        + str(config["Variables"]["deviceId"])
-    )  # shitcode, I know
-
-    requests.post(
-        url,
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
-        data=payload,
-    )
+    datasender.send(json_data)
