@@ -10,12 +10,7 @@ def send(arguments):
         "data": json.dumps(arguments),
     }
 
-    url = (
-        "https://"
-        + settings.region
-        + ".openapp.io.mi.com/openapp/device/rpc/"
-        + str(settings.deviceId)
-    )  # shitcode, I know
+    url = f"https://{settings.region}.openapp.io.mi.com/openapp/device/rpc/{str(settings.deviceId)}"
 
     requests.post(
         url,
