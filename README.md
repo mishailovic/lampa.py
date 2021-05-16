@@ -1,25 +1,34 @@
 # lampa.py
 Simple python lib to interact with Xiaomi lamps [WIP]
 
-Tutorial for getting variables:
+# Installation:
 
-• You need rooted device, until I figure out how to get token values and device ID without root.
+```
+git clone https://github.com/mishailovic/lampa.py
+cd lampa.py
+pip3 install -r requirements.txt
+```
 
-• Download yeelight app from google play, and connect your lamp. If yeelight will ask you about server location choose east Europe.
+# Logging in and getting information ablout lamps:
 
-• Go to /data/data/com.yeelight.cherry/shared_perfs/acces.token.xml and copy value which starts with “V3”. This is your accessToken, save it.
+```
+python3 login.py
+```
 
-• Go to /data/data/com.yeelight.cherry/shared_perfs/mipush_account.xml and copy value from string “app_id”. This is deviceId, you also need to save it somewhere.
+This script will automatically receive all your lamp's credentials, just follow the instructions in the terminal.
 
-• Find the device.db in /data/data/ com.yeelight.cherry/databases and copy the device id value, this is deviceId.
 
-examle usage:
+# Examle usage:
 
 ```
 >>> import lampa
->>> lampa.toggle("on")
+>>> lampa.toggle("my_bedside_lamp", "on") # my_bedside_lamp is a name of my lamp which i configured in yeelight app.
 ```
 
 *lamp turns on, hooray!*
+
+# Docs:
+
+Comming soon!
 
 

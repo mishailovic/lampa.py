@@ -1,4 +1,0 @@
-clientId = ""
-accessToken = ""
-region = ""
-deviceId = ""

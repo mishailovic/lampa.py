@@ -1,34 +1,43 @@
 import json
 from utils import datasender
-from utils import settings
 
 
-def toggle(arguments):
-    if arguments == "on":
-        params = "on"
-    elif arguments == "off":
-        params = "off"
-    else:
-        return 'Arguments are incorrect, only "on" and "off" is possible'
+def toggle(device, arguments):
 
     json_data = {
-        "did": settings.deviceId,
-        "id": "1",
         "method": "set_power",
-        "params": [params],
+        "params": [arguments],
     }
 
-    datasender.send(json_data)
+    datasender.send(device, json_data)
 
 
-def color(red, green, blue, effect="smooth", duration=500):
+def color(device, red, green, blue, effect="smooth", duration=500):
     rgb = (red * 65536) + (green * 256) + blue
 
     json_data = {
-        "did": settings.deviceId,
-        "id": "1",
         "method": "set_rgb",
         "params": [rgb, effect, duration],
     }
 
-    datasender.send(json_data)
+    datasender.send(device, json_data)
+
+
+def brightness(device, brightness, effect="smooth", duration=500):
+
+    json_data = {
+        "method": "set_bright",
+        "params": [brightness, effect, duration],
+    }
+
+    datasender.send(device, json_data)
+
+
+def color_temp(device, ct_value, effect="smooth", duration=500):
+
+    json_data = {
+        "method": "set_ct_abx",
+        "params": [ct_value, effect, duration],
+    }
+
+    datasender.send(device, json_data)

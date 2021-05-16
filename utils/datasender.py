@@ -1,16 +1,21 @@
 import requests
-from utils import settings
 import json
 
+with open("settings/settings.json") as settings:
+    data = json.loads(settings.read())
 
-def send(arguments):
+
+def send(device, arguments):
+    with open(f"settings/devices/{device}.json") as settings:
+        device_data = json.loads(settings.read())
+
     payload = {
-        "clientId": settings.clientId,
-        "accessToken": settings.accessToken,
+        "clientId": data["clientId"],
+        "accessToken": data["accessToken"],
         "data": json.dumps(arguments),
     }
 
-    url = f"https://{settings.region}.openapp.io.mi.com/openapp/device/rpc/{str(settings.deviceId)}"
+    url = f"https://{data['region']}.openapp.io.mi.com/openapp/device/rpc/{str(device_data['did'])}"
 
     requests.post(
         url,
