@@ -1,6 +1,13 @@
 from utils import login
 import json
 import requests
+import os
+
+try:
+    os.mkdir("settings")
+    os.mkdir("settings/devices")
+except FileExistsError:
+    pass
 
 client_id = 2882303761517308695
 client_secret = "OrwZHJ/drEXakH1LsfwwqQ=="
